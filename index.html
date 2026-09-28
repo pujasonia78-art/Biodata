@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biodata | Puja Sonia Wati</title>
+  <!-- Ikon tab browser (favicon) -->
+  <link rel="icon" type="image/jpeg" href="profiltab.jpg" />
+  <link rel="apple-touch-icon" href="profiltab.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#fbf1f4; --surface:#fff; --ink:#2a1a22; --muted:#75606a; --line:#f0d5de; --accent:#d6336c; --accent-ink:#fff; --glow-a:rgba(214,51,108,.55); --glow-b:rgba(214,51,108,.28); --blob2:#ffb27a; }
+    :root[data-theme="dark"] { --bg:#1d1318; --surface:#291b22; --ink:#f5e9ee; --muted:#b9a3ad; --line:#43303a; --accent:#ff8fb1; --accent-ink:#2a0f19; --glow-a:rgba(255,143,177,.75); --glow-b:rgba(255,143,177,.4); --blob2:#8b6cff; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; line-height:1.65; }
+    a { color:var(--accent); font-weight:700; }
+    button { font:inherit; color:inherit; cursor:pointer; }
+    :focus-visible { outline:3px solid var(--accent); outline-offset:3px; border-radius:6px; }
+
+    .wrap { max-width:640px; margin:0 auto; padding:56px 24px 80px; }
+    .tema { position:fixed; top:16px; right:16px; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:var(--surface); font-size:20px; z-index:5; }
+
+    header { text-align:center; margin-bottom:36px; }
+    .apung { display:inline-block; animation:apung 4s ease-in-out infinite; }
+    .foto { display:block; width:132px; height:132px; border-radius:50%; object-fit:cover; border:4px solid var(--accent); background:var(--surface);
+            box-shadow:0 0 14px var(--glow-a), 0 0 34px var(--glow-b); animation:glow 2.8s ease-in-out infinite; transition:transform .25s ease; }
+    .foto:hover { transform:rotate(-8deg) scale(1.06); }
+    @keyframes apung { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
+    @keyframes glow {
+      0%,100% { box-shadow:0 0 12px var(--glow-a), 0 0 28px var(--glow-b); }
+      50%     { box-shadow:0 0 22px var(--glow-a), 0 0 52px var(--glow-b), 0 0 80px var(--glow-b); }
+    }
+    h1 { margin:16px 0 0; font-size:clamp(34px,8vw,48px); line-height:1.1; letter-spacing:-.03em; font-weight:800; }
+    .sub { margin:6px 0 0; color:var(--muted); }
+    .sapa { margin:14px 0 0; font-style:italic; }
+
+    section { background:var(--surface); border-radius:22px; padding:26px 28px; margin-bottom:18px; }
+    h2 { margin:0 0 14px; font-size:20px; letter-spacing:-.01em; }
+    h3 { margin:0; font-size:17px; }
+    p { margin:0; }
+    dl { margin:0; }
+    .baris { display:grid; grid-template-columns:150px 1fr; gap:16px; padding:11px 0; border-top:1px solid var(--line); }
+    .baris:first-child { border-top:0; padding-top:0; }
+    .baris:last-child { padding-bottom:0; }
+    dt { color:var(--muted); } dd { margin:0; font-weight:500; }
+    .sekolah { display:flex; gap:14px; align-items:center; }
+    .sekolah .ikon { font-size:30px; }
+    .sekolah p { color:var(--muted); }
+    .daftar { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px; }
+    .daftar li { padding:6px 14px; border:1px solid var(--line); border-radius:999px; }
+    .tautan { display:flex; flex-wrap:wrap; gap:8px 24px; }
+
+    /* Latar hidup: bola cahaya + partikel melayang */
+    body { overflow-x:hidden; }
+    .wrap { position:relative; z-index:1; }
+    .latar { position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none; }
+    .blob { position:absolute; border-radius:50%; filter:blur(80px); opacity:.28; animation:melayang 18s ease-in-out infinite; }
+    :root[data-theme="dark"] .blob { opacity:.32; }
+    .b1 { width:380px; height:380px; top:-110px; left:-90px; background:var(--accent); }
+    .b2 { width:340px; height:340px; bottom:-90px; right:-70px; background:var(--blob2); animation-delay:-7s; }
+    .b3 { width:260px; height:260px; top:48%; left:58%; background:var(--accent); animation-delay:-12s; opacity:.18; }
+    @keyframes melayang { 0%,100% { transform:translate(0,0) scale(1); } 50% { transform:translate(50px,-40px) scale(1.15); } }
+    .partikel { position:absolute; bottom:-20px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--glow-a); opacity:0; animation:naik linear infinite; }
+    @keyframes naik {
+      0%   { transform:translate(0,0); opacity:0; }
+      10%  { opacity:.75; }
+      90%  { opacity:.45; }
+      100% { transform:translate(36px,-110vh); opacity:0; }
+    }
+
+    /* Kartu muncul saat di-scroll + efek hover */
+    section { transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1), box-shadow .3s ease; }
+    section.muncul { opacity:0; transform:translateY(28px); }
+    section.muncul.tampak { opacity:1; transform:none; }
+    section.muncul.tampak:hover { transform:translateY(-4px); box-shadow:0 12px 34px var(--glow-b); }
+    .daftar li { transition:background .2s, color .2s, border-color .2s, transform .2s; }
+    .daftar li:hover { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); transform:translateY(-2px); }
+
+    /* Judul nama: gradasi berkilau + glow + garis bawah */
+    :root { --judul2:#ff7a45; }
+    :root[data-theme="dark"] { --judul2:#b79bff; }
+    h1 { background:linear-gradient(100deg, var(--accent) 0%, var(--judul2) 50%, var(--accent) 100%); background-size:200% auto;
+         -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
+         filter:drop-shadow(0 0 18px var(--glow-b)); animation:kilau 6s linear infinite; transition:letter-spacing .4s ease; }
+    h1:hover { letter-spacing:.01em; }
+    h1::after { content:""; display:block; width:56px; height:4px; margin:14px auto 4px; border-radius:999px;
+                background:linear-gradient(90deg, var(--accent), var(--judul2)); box-shadow:0 0 12px var(--glow-a);
+                -webkit-text-fill-color:initial; animation:garis 3.2s ease-in-out infinite; }
+    @keyframes kilau { to { background-position:200% center; } }
+    @keyframes garis { 0%,100% { width:36px; } 50% { width:96px; } }
+
+    /* Efek ketik pada sapaan */
+    .sapa { min-height:1.65em; }
+    .sapa.ketik::after { content:"|"; margin-left:2px; color:var(--accent); animation:kedip .8s steps(1) infinite; }
+    @keyframes kedip { 50% { opacity:0; } }
+
+    /* Musik latar */
+    .musik { position:fixed; top:16px; right:68px; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:var(--surface); font-size:20px; z-index:5; }
+    .musik.main { border-color:var(--accent); box-shadow:0 0 14px var(--glow-b); }
+    .tema, .musik { display:grid; place-items:center; padding:0; color:var(--ink); transition:color .2s, border-color .2s, box-shadow .2s; }
+    .tema:hover, .musik:hover { color:var(--accent); border-color:var(--accent); }
+    .tema svg, .musik svg { width:20px; height:20px; display:block; }
+    .musik .not { display:grid; place-items:center; }
+    .musik.main { color:var(--accent); }
+    .musik.main .not { animation:goyang 1.2s ease-in-out infinite; }
+    @keyframes goyang { 0%,100% { transform:rotate(-12deg); } 50% { transform:rotate(12deg) translateY(-2px); } }
+
+    /* Galeri */
+    .buka-galeri { position:fixed; right:0; top:50%; transform:translateY(-50%); width:32px; height:64px; border:1px solid var(--line); border-right:0; border-radius:18px 0 0 18px; background:var(--surface); font-size:22px; z-index:5; }
+    .galeri { position:fixed; top:12px; right:12px; bottom:12px; width:min(420px,calc(100% - 24px)); border-radius:24px; background:var(--surface); box-shadow:0 10px 40px rgba(0,0,0,.35); transform:translateX(calc(100% + 24px)); transition:transform .3s ease; z-index:10; display:flex; flex-direction:column; padding:20px; }
+    .galeri.terbuka { transform:none; }
+    .galeri-atas { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+    .tutup { width:36px; height:36px; border-radius:50%; border:1px solid var(--line); background:transparent; }
+    .bingkai { flex:1; min-height:0; display:flex; align-items:center; gap:8px; }
+    .bingkai img { flex:1; min-width:0; aspect-ratio:3/4; max-height:100%; object-fit:cover; border-radius:22px; background:var(--bg); }
+    .nav { width:38px; height:38px; flex:none; border-radius:50%; border:1px solid var(--line); background:transparent; font-size:22px; line-height:1; }
+    .nav, .tutup { transition:transform .15s ease, color .2s, border-color .2s; }
+    .nav:hover, .tutup:hover { color:var(--accent); border-color:var(--accent); }
+    .nav:active, .tutup:active { transform:scale(.86); }
+    /* Hiasan galeri */
+    .galeri { overflow:hidden; isolation:isolate; }
+    .galeri::before { content:""; position:absolute; inset:0; z-index:-1; background:var(--foto, none) center/cover; filter:blur(38px) saturate(1.4); transform:scale(1.4); opacity:.32; transition:opacity .4s; }
+    .galeri::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg, transparent 40%, var(--surface) 100%); opacity:.7; }
+    .judul-galeri { display:flex; align-items:center; gap:12px; }
+    .ikon-galeri { width:36px; height:36px; flex:none; display:grid; place-items:center; border-radius:50%; border:1px solid var(--line); color:var(--accent); background:transparent; }
+    .ikon-galeri svg { width:18px; height:18px; }
+    .judul-galeri h3 { font-size:18px; line-height:1.2; }
+    .galeri-sub { font-size:13px; color:var(--muted); }
+    .bingkai img { box-shadow:0 0 0 3px var(--accent), 0 14px 36px var(--glow-b); }
+    .mini { position:relative; flex:none; display:flex; gap:8px; margin-top:14px; padding:4px 2px 6px; overflow-x:auto; scrollbar-width:none; }
+    .mini::-webkit-scrollbar { display:none; }
+    .kecil { flex:none; width:46px; height:46px; padding:0; border-radius:50%; border:2px solid transparent; background:var(--bg); overflow:hidden; opacity:.6; transition:opacity .2s, transform .2s, border-color .2s, box-shadow .2s; }
+    .kecil img { width:100%; height:100%; object-fit:cover; display:block; }
+    .kecil:hover { opacity:1; transform:translateY(-2px); }
+    .kecil.aktif { opacity:1; border-color:var(--accent); box-shadow:0 0 12px var(--glow-a); transform:scale(1.08); }
+    .hitung { display:block; width:fit-content; max-width:100%; margin:10px auto 0; padding:3px 14px; border:1px solid var(--line); border-radius:999px; background:var(--surface); text-align:center; color:var(--muted); font-size:13px; font-weight:700; }
+
+    .tirai { position:fixed; inset:0; background:transparent; opacity:0; pointer-events:none; z-index:9; transition:opacity .3s ease; }
+    .tirai.terbuka { pointer-events:auto; opacity:1; }
+
+    @media (max-width:560px) {
+      .wrap { padding:72px 16px 64px; }
+      section { padding:22px 20px; }
+      .baris { grid-template-columns:1fr; gap:2px; }
+
+      /* Galeri jadi lembar dari bawah, tidak memenuhi layar */
+      .tirai { background:rgba(0,0,0,.5); }
+      .galeri { top:auto; left:12px; right:12px; bottom:max(12px, env(safe-area-inset-bottom)); width:auto; max-height:calc(100dvh - 24px); overflow-y:auto; padding:16px; transform:translateY(calc(100% + 40px)); }
+      .galeri-atas { margin-bottom:12px; }
+      .bingkai { flex:none; position:relative; display:flex; justify-content:center; }
+      .bingkai img { flex:none; width:min(100%, calc(max(160px, 100dvh - 330px) * .75)); max-height:none; }
+      .nav { position:absolute; top:calc(50% - 19px); z-index:2; background:rgba(0,0,0,.45); color:#fff; border-color:rgba(255,255,255,.35); }
+      #sebelum { left:8px; }
+      #sesudah { right:8px; }
+    }
+    @media (prefers-reduced-motion:reduce) { .apung,.foto,.musik.main .not,.blob,.sapa.ketik::after,h1,h1::after { animation:none; } .partikel { display:none; } section { transition:none; } .foto,.galeri { transition:none; } .foto:hover { transform:none; } }
+  </style>
+</head>
+<body>
+  <div class="latar" id="latar" aria-hidden="true">
+    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  </div>
+
+  <button class="tema" id="tema" type="button" aria-label="Ganti tema"></button>
+
+  <main class="wrap">
+    <header>
+      <div class="apung">
+        <img class="foto" src="profil.jpeg" alt="Foto profil Puja Sonia Wati" />
+      </div>
+      <h1>Jaancoque</h1>
+      <p class="sub">Biodata diri</p>
+      <p class="sapa">Ikan sepat ikan tongkol, selamat datang ya tol^^</p>
+    </header>
+
+    <section aria-labelledby="t-tentang">
+      <h2 id="t-tentang">Tentang</h2>
+      <dl>
+        <div class="baris"><dt>Nama Lengkap</dt><dd>Puja Sonia Wati</dd></div>
+        <div class="baris"><dt>Tempat, Tanggal Lahir</dt><dd>Nganjuk, 31 Maret 2008</dd></div>
+        <div class="baris"><dt>Jenis Kelamin</dt><dd>Perempuan</dd></div>
+        <div class="baris"><dt>Alamat</dt><dd>Jl. Semeru, Dusun Gondang, Ds. Tanjung</dd></div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="t-pendidikan">
+      <h2 id="t-pendidikan">Pendidikan</h2>
+      <div class="sekolah">
+        <span class="ikon" aria-hidden="true">🎓</span>
+        <div>
+          <h3>SMK Negeri 1 Kertosono</h3>
+          <p>Rekayasa Perangkat Lunak (RPL)</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="t-hobi">
+      <h2 id="t-hobi">Hobi &amp; Minat</h2>
+      <ul class="daftar">
+        <li>Mendengarkan Musik</li>
+        <li>Membaca</li>
+        <li>Mendaki</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="t-sosmed">
+      <h2 id="t-sosmed">Sosial Media</h2>
+      <div class="tautan">
+        <a href="https://instagram.com/pjsnw_" target="_blank" rel="noopener">Instagram @pjsnw_</a>
+        <a href="https://tiktok.com/@jaa.thirtyone" target="_blank" rel="noopener">TikTok @jaa.thirtyone</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Musik latar: taruh file lagumu di src/musik.mp3 -->
+  <audio id="audio" src="src/musik.mp3" loop preload="none"></audio>
+  <button class="musik" id="musik" type="button" aria-pressed="false" aria-label="Putar musik">
+    <span class="not" id="musikIkon" aria-hidden="true"></span>
+  </button>
+
+  <button class="buka-galeri" id="bukaGaleri" type="button" aria-label="Buka galeri foto">‹</button>
+
+  <div class="tirai" id="tirai"></div>
+
+  <aside class="galeri" id="galeri" aria-label="Galeri foto" aria-hidden="true">
+    <div class="galeri-atas">
+      <div class="judul-galeri">
+        <span class="ikon-galeri" id="ikonGaleri" aria-hidden="true"></span>
+        <div>
+          <h3>Galeri Foto</h3>
+          <p class="galeri-sub">Kenangan seru</p>
+        </div>
+      </div>
+      <button class="tutup" id="tutupGaleri" type="button" aria-label="Tutup galeri">✕</button>
+    </div>
+    <div class="bingkai">
+      <button class="nav" id="sebelum" type="button" aria-label="Foto sebelumnya">‹</button>
+      <img id="fotoGaleri" src="" alt="" />
+      <button class="nav" id="sesudah" type="button" aria-label="Foto berikutnya">›</button>
+    </div>
+    <div class="mini" id="mini" aria-label="Pilih foto"></div>
+    <p class="hitung" id="hitung"></p>
+  </aside>
+
+  <script>
+    // ===== Ikon SVG =====
+    const svg = (isi) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + isi + '</svg>';
+    const IKON = {
+      matahari: svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>'),
+      bulan: svg('<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>'),
+      musik: svg('<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>'),
+      jeda: svg('<rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/>'),
+      kamera: svg('<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>')
+    };
+
+    // ===== Tema gelap / terang =====
+    const root = document.documentElement;
+    const tombolTema = document.getElementById('tema');
+    function setTema(t) {
+      root.dataset.theme = t;
+      tombolTema.innerHTML = t === 'dark' ? IKON.matahari : IKON.bulan;
+      try { localStorage.setItem('tema', t); } catch (e) {}
+    }
+    let awal = null;
+    try { awal = localStorage.getItem('tema'); } catch (e) {}
+    setTema(awal || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+    tombolTema.addEventListener('click', () => setTema(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+
+    // ===== Musik latar =====
+    const audio = document.getElementById('audio');
+    const tombolMusik = document.getElementById('musik');
+    const ikonMusik = document.getElementById('musikIkon');
+    function setMusik(main) {
+      tombolMusik.classList.toggle('main', main);
+      tombolMusik.setAttribute('aria-pressed', main);
+      tombolMusik.setAttribute('aria-label', main ? 'Jeda musik' : 'Putar musik');
+      tombolMusik.title = main ? 'Jeda musik' : 'Putar musik';
+      ikonMusik.innerHTML = main ? IKON.jeda : IKON.musik;
+    }
+    setMusik(false);
+    tombolMusik.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().then(() => setMusik(true)).catch(() => {
+          tombolMusik.title = 'File musik tidak ditemukan (src/musik.mp3)';
+          alert('File musik tidak ditemukan. Taruh lagumu di src/musik.mp3');
+        });
+      } else {
+        audio.pause();
+        setMusik(false);
+      }
+    });
+
+    // ===== Efek hiasan =====
+    const kurangGerak = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Partikel melayang di latar
+    if (!kurangGerak) {
+      const latar = document.getElementById('latar');
+      for (let n = 0; n < 22; n++) {
+        const p = document.createElement('span');
+        const ukuran = 3 + Math.random() * 5;
+        p.className = 'partikel';
+        p.style.width = p.style.height = ukuran + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDuration = (12 + Math.random() * 14) + 's';
+        p.style.animationDelay = (-Math.random() * 20) + 's';
+        latar.appendChild(p);
+      }
+    }
+
+    // Kartu muncul pelan saat di-scroll
+    const kartu = document.querySelectorAll('section');
+    if (!kurangGerak && 'IntersectionObserver' in window) {
+      const pengamat = new IntersectionObserver((daftar) => {
+        daftar.forEach((d) => {
+          if (d.isIntersecting) { d.target.classList.add('tampak'); pengamat.unobserve(d.target); }
+        });
+      }, { threshold: 0.12 });
+      kartu.forEach((k, n) => {
+        k.classList.add('muncul');
+        k.style.transitionDelay = (n * 60) + 'ms';
+        pengamat.observe(k);
+        // hapus jeda setelah muncul supaya hover tetap responsif
+        k.addEventListener('transitionend', () => { k.style.transitionDelay = '0ms'; }, { once: true });
+      });
+    }
+
+    // Efek ketik pada sapaan
+    const sapa = document.querySelector('.sapa');
+    if (sapa && !kurangGerak) {
+      const teks = sapa.textContent;
+      sapa.setAttribute('aria-label', teks);
+      sapa.textContent = '';
+      sapa.classList.add('ketik');
+      let k = 0;
+      const ketik = setInterval(() => {
+        sapa.textContent = teks.slice(0, ++k);
+        if (k >= teks.length) {
+          clearInterval(ketik);
+          setTimeout(() => sapa.classList.remove('ketik'), 1600);
+        }
+      }, 55);
+    }
+
+    // ===== Galeri foto =====
+    // Ganti nama file sesuai isi folder src/ milikmu
+    const foto = [
+      'puja1.jpeg', 'puja2.jpeg', 'puja3.jpeg', 'puja4.jpeg', 'puja5.jpeg',
+      'puja6.jpeg', 'puja7.jpeg', 'puja8.jpeg'
+    ].map(f => 'src/' + f);
+
+    const galeri = document.getElementById('galeri');
+    const img = document.getElementById('fotoGaleri');
+    const hitung = document.getElementById('hitung');
+    let i = 0;
+
+    img.onerror = () => { hitung.textContent = 'Foto tidak ditemukan: ' + foto[i]; };
+    function tampil() {
+      img.src = foto[i];
+      img.alt = 'Foto ' + (i + 1);
+      hitung.textContent = (i + 1) + ' / ' + foto.length;
+      galeri.style.setProperty('--foto', 'url("' + foto[i] + '")');
+      [...mini.children].forEach((b, n) => b.classList.toggle('aktif', n === i));
+      const aktif = mini.children[i];
+      if (aktif) mini.scrollTo({ left: aktif.offsetLeft - (mini.clientWidth - aktif.clientWidth) / 2, behavior: 'smooth' });
+    }
+    const tirai = document.getElementById('tirai');
+    function bukaG() { galeri.classList.add('terbuka'); tirai.classList.add('terbuka'); galeri.setAttribute('aria-hidden', 'false'); tampil(); }
+    function tutupG() { galeri.classList.remove('terbuka'); tirai.classList.remove('terbuka'); galeri.setAttribute('aria-hidden', 'true'); }
+    tirai.addEventListener('click', tutupG);
+
+    // Ikon judul galeri
+    document.getElementById('ikonGaleri').innerHTML = IKON.kamera;
+
+    // Thumbnail kecil di bawah foto
+    const mini = document.getElementById('mini');
+    foto.forEach((f, n) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'kecil';
+      b.setAttribute('aria-label', 'Lihat foto ' + (n + 1));
+      b.innerHTML = '<img src="' + f + '" alt="" loading="lazy" />';
+      b.addEventListener('click', () => { if (n !== i) geser(n - i); });
+      mini.appendChild(b);
+    });
+
+    // Geser dengan jari di layar sentuh
+    const areaFoto = document.querySelector('.bingkai');
+    let awalX = null;
+    areaFoto.addEventListener('touchstart', (e) => { awalX = e.touches[0].clientX; }, { passive: true });
+    areaFoto.addEventListener('touchend', (e) => {
+      if (awalX === null) return;
+      const dx = e.changedTouches[0].clientX - awalX;
+      awalX = null;
+      if (Math.abs(dx) > 50) geser(dx < 0 ? 1 : -1);
+    });
+    let bergeser = false;
+    async function geser(n) {
+      if (bergeser) return;
+      i = (i + n + foto.length) % foto.length;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) { tampil(); return; }
+      bergeser = true;
+      const arah = n > 0 ? 1 : -1;
+      // 1) foto lama meluncur keluar sambil memudar
+      const keluar = img.animate(
+        [{ transform: 'translateX(0) scale(1)', opacity: 1 },
+         { transform: 'translateX(' + (-arah * 48) + 'px) scale(.96)', opacity: 0 }],
+        { duration: 180, easing: 'ease-in', fill: 'forwards' }
+      );
+      try { await keluar.finished; } catch (e) {}
+      // 2) ganti foto, tunggu selesai dimuat
+      tampil();
+      try { await img.decode(); } catch (e) {}
+      // 3) foto baru meluncur masuk dari sisi berlawanan
+      img.animate(
+        [{ transform: 'translateX(' + (arah * 48) + 'px) scale(.96)', opacity: 0 },
+         { transform: 'translateX(0) scale(1)', opacity: 1 }],
+        { duration: 280, easing: 'cubic-bezier(.22,1,.36,1)' }
+      );
+      keluar.cancel();
+      setTimeout(() => { bergeser = false; }, 280);
+    }
+
+    document.getElementById('bukaGaleri').addEventListener('click', bukaG);
+    document.getElementById('tutupGaleri').addEventListener('click', tutupG);
+    document.getElementById('sebelum').addEventListener('click', () => geser(-1));
+    document.getElementById('sesudah').addEventListener('click', () => geser(1));
+    document.addEventListener('keydown', (e) => {
+      if (!galeri.classList.contains('terbuka')) return;
+      if (e.key === 'Escape') tutupG();
+      if (e.key === 'ArrowLeft') geser(-1);
+      if (e.key === 'ArrowRight') geser(1);
+    });
+  </script>
+</body>
+</html>
